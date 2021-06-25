@@ -1,6 +1,7 @@
 ﻿using Attendance.Models;
 using Attendance.ViewModels;
 using Attendance.ViewModels.Forms;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace Attendance.Controllers
 {
-    public class SessionController : Controller
+    // This controller should be tested on cloud
+    public class SessionController : UserController
     {
         private readonly DataContext _ctx;
 
@@ -19,14 +21,15 @@ namespace Attendance.Controllers
             _ctx = ctx;
         }
 
-        // Do i need it?
+        // Do i really need it?
         public IActionResult Create()
         {
-            ViewData["Courses"] = new SelectList(_ctx.Courses.ToList(), "Id", "Name");
+            ViewData["Courses"] = new SelectList(_ctx.Courses.Where(x => x.UserId == UserId).ToList(), "Id", "Name");
             return View();
         }
 
         [HttpPost]
+        [Authorize(Policy = AttendanceConstants.Policies.Teacher)]
         public async Task<IActionResult> Create(SessionForm sessionForm)
         {
             var session = new Session

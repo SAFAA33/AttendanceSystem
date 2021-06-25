@@ -29,7 +29,7 @@ namespace Attendance.Controllers
         public async Task<IActionResult> IndexAsync()
         {
 
-            ViewData["Courses"] = new SelectList(_ctx.Courses.ToList(), "Id", "Name");
+            ViewData["Courses"] = new SelectList(_ctx.Courses.Where(x => x.UserId == UserId).ToList(), "Id", "Name");
             var courses = await _ctx.Courses
                 .Include(x => x.Sessions)
                     .ThenInclude(y => y.Attendees)
