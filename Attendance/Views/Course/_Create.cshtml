@@ -1,0 +1,17 @@
+﻿@model Course
+
+@{
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
+}
+
+<form asp-controller="Course" asp-action="Create">
+    <div>
+        <label>Course Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label>Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <button type="submit">Create</button>
+</form>

@@ -1,0 +1,83 @@
+﻿@model SessionViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Session Page";
+}
+
+
+<div>
+
+    <p><strong>Session ID:</strong> @Model.Id</p>
+    @if (Model.Duration <= 1)
+    {
+        <p><strong>Session Duration:</strong> @Model.Duration Hour</p>
+    }
+    else
+    {
+        <p><strong>Session Duration:</strong> @Model.Duration Hours</p>
+    }
+    <p hidden id="session-duration">@Model.SessionDuration</p>
+    <p><strong>QR Code Link:</strong> @Model.QRCode</p>
+
+
+</div>
+
+<div class="row">
+    <div class="col-9">
+        
+    </div>
+    <div class="col-3">
+        <span id="timer"></span>
+        <div id="qrcode"></div>
+    </div>
+</div>
+
+<a asp-action="CheckIn" asp-route-sessionId="@Model.Id">Check-In</a>
+
+@section Scripts {
+    <script src="~/lib/qr-code/qrcode.js"></script>
+    <script src="~/lib/moment/moment.js"></script>
+    <script>
+
+
+
+        setInterval(myTimer, 5000);
+        var qrcode = new QRCode(document.getElementById('qrcode'), {
+            width: 250,
+            height: 250,
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            qrcode.makeCode(t.toString());
+        }
+
+
+        // get from duration
+        var duration = parseInt($("#session-duration").text());
+        var m = moment.duration(duration, 'hours');
+        var count = m.asSeconds();
+        var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+
+        function timer() {
+            count = count - 1;
+            if (count == -1) {
+                clearInterval(counter);
+                return;
+            }
+
+            var seconds = count % 60;
+            var minutes = Math.floor(count / 60);
+            var hours = Math.floor(minutes / 60);
+            minutes %= 60;
+            hours %= 60;
+
+            document.getElementById("timer").innerHTML = hours + ":" + minutes + ":" + seconds;
+
+
+        }
+    </script>
+}

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Course>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (User.HasClaim( x=> x.Value == AttendanceConstants.Roles.Student))
+{
+    <div>Hi I am student</div>
+}
+
+@if (User.HasClaim(x => x.Value == AttendanceConstants.Roles.Teacher))
+{
+
+}
+
+<p><a onclick="createCourse()">Create Course</a></p>
+
+@*make it popup modal*@
+<div id="create-course-section" style="display:none">
+    <partial name="~/Views/Course/_Create.cshtml" model="new Course()" />
+</div>
+
+
+
+<p><a onclick="createSession()">Create Session</a></p>
+
+@*make it popup modal*@
+<div id="create-session-section" style="display:none">
+    <partial name="~/Views/Session/_Create.cshtml" model="new SessionForm()" view-data="ViewData" />
+</div>
+
+
+
+@foreach (var item in Model)
+{
+    <h4 onclick="showSessions(@item.Id)">@item.Name</h4>
+
+
+    <div id="session-@item.Id" style="display:none">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var session in item.Sessions)
+                {
+                    <tr onclick="showSessionDetails(@session.Id)" class="tr-body">
+                        <td>@session.Id</td>
+                        <td>@session.Name</td>
+                        <td>@session.Duration</td>
+                    </tr>
+                    <tr id="attendance-@session.Id" style="display:none">
+                        <td colspan="3">
+                            Attendees
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                @foreach (var a in session.Attendees)
+                                {
+                                    <tr>
+                                        <td>@a.Student.Id</td>
+                                        <td>@a.Student.Name</td>
+                                        <td>@a.Student.Email</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                        @*@foreach (var a in session.Attendees)
+                            {
+                                <td>@a.Student.Id</td>
+                                <td>@a.Student.Name</td>
+                                <td>@a.Student.Email</td>
+                            }*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Scripts{
+    <script>
+        function showSessions(id) {
+            $('#session-' + id + '').toggle();
+        }
+
+        function showSessionDetails(sessionId) {
+            $('#attendance-' + sessionId + '').toggle();
+        }
+
+        function createSession() {
+            $("#create-session-section").toggle();
+        }
+
+        function createCourse() {
+            $("#create-course-section").toggle();
+        }
+
+    </script>
+}

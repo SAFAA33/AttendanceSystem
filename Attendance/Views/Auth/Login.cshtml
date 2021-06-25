@@ -1,0 +1,24 @@
+﻿@model LoginForm
+
+
+
+
+    <h3 class="text-center">LOGIN</h3>
+    <div class="container">
+        <div class="text-center">
+            <form asp-action="Login" method="post">
+                <div>
+                    <label>Username</label>
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="ReturnUrl" />
+                <input type="submit" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>

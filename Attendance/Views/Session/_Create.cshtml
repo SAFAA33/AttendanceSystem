@@ -1,0 +1,22 @@
+﻿@model SessionForm
+
+@{
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
+}
+
+<form asp-controller="Session" asp-action="Create">
+    <div>
+        <label>Session Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label>Duartion</label>
+        <input asp-for="Duration" class="form-control" />
+    </div>
+    <div>
+        <label>Course</label>
+        <select class="form-control" asp-for="CourseId" asp-items="ViewBag.Courses"></select>
+    </div>
+
+    <button type="submit">Start</button>
+</form>

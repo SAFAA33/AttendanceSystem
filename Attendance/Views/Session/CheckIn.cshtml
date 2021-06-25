@@ -1,0 +1,16 @@
+﻿@model CheckInForm
+@{
+
+}
+
+
+<div class="text-center">
+    <form asp-action="CheckIn">
+        <div class="form-group">
+            <label>Enter your ID: </label>
+            <input class="form-control" asp-for="StudentId" />
+        </div>
+        <input type="hidden" asp-for="SessionId" />
+        <button type="submit">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+﻿- Planning Authentication:
+
+
+
+- Create Session: 
+	- Session has QR Code and students can check-in.
+	- Session should calculate number of check-ins.
+	- Session should start immediately once it is created and QR code appears which allow students to check-in.
+	- Session can be ended manually or automatically after duration passes.
+	
+
+- Check-in Functionality:
+	- When scan the QR code, student must be redirected to checkIn form page.
+	- CheckIn page allows student to enter his ID and the verification code.
+	- There should be a verification code.
+
+
+
+
+- Reporting
+- Authentication.
+- Student login: view history of attendance.

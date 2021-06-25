@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="text-center">
+    <span id="time"></span>
+    <span id="qrcode"></span>
+</div>
+
+@section Scripts {
+    <script src="~/lib/qr-code/qrcode.js"></script>
+    <script>
+
+        /*var myVar =*/ setInterval(myTimer, 5000);
+
+        //function myStopFunction() {
+        //    clearInterval(myVar);
+        //}
+
+        var qrcode = new QRCode(document.getElementById('qrcode'));
+
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            qrcode.makeCode(t.toString());
+        }
+
+
+    </script>
+}
