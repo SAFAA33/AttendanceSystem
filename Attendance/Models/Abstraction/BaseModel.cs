@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Attendance.Models
+namespace Attendance.Models.Abstraction
 {
     public class BaseModel<TKey>
     {

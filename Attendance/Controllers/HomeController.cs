@@ -1,5 +1,6 @@
 ﻿using Attendance.Models;
 using Attendance.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Attendance.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : UserController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly DataContext _ctx;
@@ -23,6 +24,8 @@ namespace Attendance.Controllers
             _ctx = ctx;
         }
 
+
+        [Authorize]
         public async Task<IActionResult> IndexAsync()
         {
 
@@ -30,7 +33,8 @@ namespace Attendance.Controllers
             var courses = await _ctx.Courses
                 .Include(x => x.Sessions)
                     .ThenInclude(y => y.Attendees)
-                        .ThenInclude(a => a.Student)
+                        .ThenInclude(a => a.User)
+                .Where(x => x.UserId == UserId)
                 .ToListAsync();
             return View(courses);
         }

@@ -73,13 +73,13 @@ namespace Attendance.Controllers
         public async Task<IActionResult> CheckIn(CheckInForm checkInForm)
         {
             // validation only
-            if (checkInForm.StudentId == 0)
+            if (string.IsNullOrEmpty(checkInForm.StudentId))
             {
                 return BadRequest();
             }
 
             // Check if student exists.
-            var student = _ctx.Students.FirstOrDefault(x => x.Id.Equals(checkInForm.StudentId));
+            var student = _ctx.User.FirstOrDefault(x => x.Id.Equals(checkInForm.StudentId));
             if (student is null)
             {
                 // TODO: should return student Id does not exists, please register
@@ -92,7 +92,7 @@ namespace Attendance.Controllers
             _ctx.Attendance.Add(new AttendanceModel
             {
                 SessionId = checkInForm.SessionId,
-                StudentId = checkInForm.StudentId
+                UserId = checkInForm.StudentId
             });
             await _ctx.SaveChangesAsync();
 

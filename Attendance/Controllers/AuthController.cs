@@ -42,31 +42,33 @@ namespace Attendance.Controllers
             var createUserResult = await _userManager.CreateAsync(user, form.Password);
             if (createUserResult.Succeeded)
             {
-                if (form.Role == Roles.Teacher)
+                if (form.Role == Role.Teacher)
                 {
                     await _userManager.AddClaimAsync(user, new Claim(
                         AttendanceConstants.Claims.Role,
                         AttendanceConstants.Roles.Teacher));
 
-                    _ctx.Add(new Teacher
+                    _ctx.Add(new User
                     {
-                        UserId = user.Id,
+                        Id = user.Id,
                         Email = user.Email,
                         Name = form.Name,
+                        Role = Role.Teacher
                     });
                 }
-                else if (form.Role == Roles.Student)
+                else if (form.Role == Role.Student)
                 {
 
                     await _userManager.AddClaimAsync(user, new Claim(
                         AttendanceConstants.Claims.Role,
                         AttendanceConstants.Roles.Student));
 
-                    _ctx.Add(new Student
+                    _ctx.Add(new User
                     {
-                        UserId = user.Id,
+                        Id = user.Id,
                         Email = user.Email,
                         Name = form.Name,
+                        Role = Role.Student
                     });
                 }
                 await _ctx.SaveChangesAsync();

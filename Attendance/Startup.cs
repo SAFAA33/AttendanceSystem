@@ -102,6 +102,7 @@ namespace Attendance
                 //config.Cookie.Domain = _config["CookieDomain"];
             });
 
+            // TODO: Check authority levels
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(AttendanceConstants.Policies.Teacher, policy => policy

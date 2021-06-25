@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Attendance.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Attendance.ViewModels.Forms
     {
         public string ReturnUrl { get; set; }
         public string Name { get; set; }
-        public Roles Role { get; set; }
+        public Role Role { get; set; }
         [Required] public string Email { get; set; }
         [Required] public string Username { get; set; }
 
@@ -22,10 +23,5 @@ namespace Attendance.ViewModels.Forms
         [DataType(DataType.Password)]
         [Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
-    }
-    public enum Roles
-    {
-        Student,
-        Teacher
     }
 }

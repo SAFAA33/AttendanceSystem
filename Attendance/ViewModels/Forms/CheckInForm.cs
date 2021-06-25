@@ -8,7 +8,7 @@ namespace Attendance.ViewModels.Forms
 {
     public class CheckInForm
     {
-        public int StudentId { get; set; }
+        public string StudentId { get; set; }
         public int SessionId { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace Attendance.Models
 {
     public class AttendanceModel
     {
-        public int StudentId { get; set; }
-        public Student Student { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
         public int SessionId { get; set; }
         public Session Session { get; set; }
         public DateTime AttendedAt { get; set; } = DateTime.Now;

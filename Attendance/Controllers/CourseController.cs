@@ -1,4 +1,6 @@
 ﻿using Attendance.Models;
+using Attendance.ViewModels.Forms;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Attendance.Controllers
 {
-    public class CourseController : Controller
+    public class CourseController : UserController
     {
         private readonly DataContext _ctx;
 
@@ -16,18 +18,30 @@ namespace Attendance.Controllers
             _ctx = ctx;
         }
 
+
+
         public IActionResult Index()
         {
             return View();
         }
 
+        
+
         [HttpPost]
-        public async Task<IActionResult> Create(Course course)
+        [Authorize(Policy = AttendanceConstants.Policies.Teacher)]
+        public async Task<IActionResult> Create(CourseForm courseForm)
         {
-            if (course is null)
+            if (courseForm is null)
             {
                 return BadRequest();
             }
+
+            var course = new Course
+            {
+                Name = courseForm.Name,
+                Description = courseForm.Description,
+                UserId = UserId
+            };
 
             _ctx.Add(course);
             await _ctx.SaveChangesAsync();

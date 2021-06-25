@@ -39,6 +39,7 @@ namespace Attendance
                     Id = 1,
                     Name = "Java",
                     Description = "Java beginner",
+                    UserId = saadUser.Id,
                     Sessions = new List<Session>()
                     {
                         new Session
@@ -67,6 +68,7 @@ namespace Attendance
                     Id = 2,
                     Name = "System Analysis",
                     Description = "System Analysis beginner",
+                    UserId = saadUser.Id,
                     Sessions = new List<Session>()
                     {
                         new Session
@@ -84,37 +86,28 @@ namespace Attendance
                     }
                 });
                 ctx.SaveChangesAsync().GetAwaiter().GetResult();
-                List<Student> students = new List<Student>()
-                {
-                    new Student
-                    {
-                        Id = 1,
-                        Name = "Saad",
-                        Email = "saad@test.com",
-                        UserId = saadUser.Id
-                    },
-                };
-                ctx.AddRange(students);
-                ctx.SaveChangesAsync().GetAwaiter().GetResult();
+                
+                
 
 
-                List<AttendanceModel> attendances = new List<AttendanceModel>()
-                {
-                    new AttendanceModel
-                    {
 
-                        SessionId = 1,
-                        StudentId = 1,
-                    },
-                    new AttendanceModel
-                    {
+                //List<AttendanceModel> attendances = new List<AttendanceModel>()
+                //{
+                //    new AttendanceModel
+                //    {
 
-                        SessionId = 1,
-                        StudentId = 2,
-                    }
-                };
-                ctx.AddRange(attendances);
-                ctx.SaveChangesAsync().GetAwaiter().GetResult();
+                //        SessionId = 1,
+                //        StudentId = 1,
+                //    },
+                //    new AttendanceModel
+                //    {
+
+                //        SessionId = 1,
+                //        StudentId = 2,
+                //    }
+                //};
+                //ctx.AddRange(attendances);
+                //ctx.SaveChangesAsync().GetAwaiter().GetResult();
             }
 
             host.Run();

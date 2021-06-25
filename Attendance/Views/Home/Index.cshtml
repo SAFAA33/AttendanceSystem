@@ -6,32 +6,29 @@
 }
 
 
-@if (User.HasClaim( x=> x.Value == AttendanceConstants.Roles.Student))
+@if (User.HasClaim(x => x.Value == AttendanceConstants.Roles.Student))
 {
-    <div>Hi I am student</div>
+    <div>Hi I am @User.Identity.Name </div>
 }
+
 
 @if (User.HasClaim(x => x.Value == AttendanceConstants.Roles.Teacher))
 {
 
+    <p><a onclick="createCourse()">Create Course</a></p>
+
+    @*make it popup modal*@
+    <div id="create-course-section" style="display:none">
+        <partial name="~/Views/Course/_Create.cshtml" model="new Course()" />
+    </div>
+
+    <p><a onclick="createSession()">Create Session</a></p>
+
+    @*make it popup modal*@
+    <div id="create-session-section" style="display:none">
+        <partial name="~/Views/Session/_Create.cshtml" model="new SessionForm()" view-data="ViewData" />
+    </div>
 }
-
-<p><a onclick="createCourse()">Create Course</a></p>
-
-@*make it popup modal*@
-<div id="create-course-section" style="display:none">
-    <partial name="~/Views/Course/_Create.cshtml" model="new Course()" />
-</div>
-
-
-
-<p><a onclick="createSession()">Create Session</a></p>
-
-@*make it popup modal*@
-<div id="create-session-section" style="display:none">
-    <partial name="~/Views/Session/_Create.cshtml" model="new SessionForm()" view-data="ViewData" />
-</div>
-
 
 
 @foreach (var item in Model)
@@ -68,19 +65,13 @@
                                 @foreach (var a in session.Attendees)
                                 {
                                     <tr>
-                                        <td>@a.Student.Id</td>
-                                        <td>@a.Student.Name</td>
-                                        <td>@a.Student.Email</td>
+                                        <td>@a.User.Id</td>
+                                        <td>@a.User.Name</td>
+                                        <td>@a.User.Email</td>
                                     </tr>
                                 }
                             </table>
                         </td>
-                        @*@foreach (var a in session.Attendees)
-                            {
-                                <td>@a.Student.Id</td>
-                                <td>@a.Student.Name</td>
-                                <td>@a.Student.Email</td>
-                            }*@
                     </tr>
                 }
             </tbody>
