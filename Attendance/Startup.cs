@@ -105,16 +105,15 @@ namespace Attendance
             // TODO: Check authority levels
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(AttendanceConstants.Policies.Teacher, policy => policy
-                    .RequireAuthenticatedUser()
-                    .RequireClaim(AttendanceConstants.Claims.Role,
-                        AttendanceConstants.Roles.Teacher,
-                        AttendanceConstants.Roles.Admin)
-                );
                 options.AddPolicy(AttendanceConstants.Policies.Admin, policy => policy
                     .RequireAuthenticatedUser()
                     .RequireClaim(AttendanceConstants.Claims.Role,
                         AttendanceConstants.Roles.Admin)
+                );
+                options.AddPolicy(AttendanceConstants.Policies.Teacher, policy => policy
+                    .RequireAuthenticatedUser()
+                    .RequireClaim(AttendanceConstants.Claims.Role,
+                        AttendanceConstants.Roles.Teacher)
                 );
                 options.AddPolicy(AttendanceConstants.Policies.Student, policy => policy
                     .RequireAuthenticatedUser()

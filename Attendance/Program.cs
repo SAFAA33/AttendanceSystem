@@ -19,14 +19,15 @@ namespace Attendance
         {
             var host = CreateHostBuilder(args).Build();
 
+            // Seeding some initial data
             using (var scope = host.Services.CreateScope())
             {
                 var ctx = scope.ServiceProvider.GetRequiredService<DataContext>();
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-                var saadUser = new IdentityUser("saad") { Email = "saad@test.com" };
-                userManager.CreateAsync(saadUser, "password").GetAwaiter().GetResult();
-                userManager.AddClaimAsync(saadUser, new Claim(
+                var saraUser = new IdentityUser("sara") { Email = "sara@test.com" };
+                userManager.CreateAsync(saraUser, "password").GetAwaiter().GetResult();
+                userManager.AddClaimAsync(saraUser, new Claim(
                     AttendanceConstants.Claims.Role,
                     AttendanceConstants.Roles.Admin)
                     )
@@ -39,7 +40,7 @@ namespace Attendance
                     Id = 1,
                     Name = "Java",
                     Description = "Java beginner",
-                    UserId = saadUser.Id,
+                    UserId = saraUser.Id,
                     Sessions = new List<Session>()
                     {
                         new Session
@@ -68,7 +69,7 @@ namespace Attendance
                     Id = 2,
                     Name = "System Analysis",
                     Description = "System Analysis beginner",
-                    UserId = saadUser.Id,
+                    UserId = saraUser.Id,
                     Sessions = new List<Session>()
                     {
                         new Session
@@ -85,6 +86,7 @@ namespace Attendance
                         }
                     }
                 });
+
                 ctx.SaveChangesAsync().GetAwaiter().GetResult();
                 
                 

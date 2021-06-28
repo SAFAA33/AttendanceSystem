@@ -1,0 +1,27 @@
+﻿@model IEnumerable<UserViewModel>
+
+<label>Search</label>
+<input type="search" placeholder="Username"/>
+<br />
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>@user.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>

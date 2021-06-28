@@ -1,7 +1,13 @@
 ﻿using Attendance.Models;
+using Attendance.ViewModels;
 using Attendance.ViewModels.Forms;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -71,6 +77,21 @@ namespace Attendance.Controllers
                         Role = Role.Student
                     });
                 }
+                else if (form.Role == Role.Admin)
+                {
+                    await _userManager.AddClaimAsync(user, new Claim(
+                        AttendanceConstants.Claims.Role,
+                        AttendanceConstants.Roles.Admin));
+
+                    _ctx.Add(new User
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        Name = form.Name,
+                        Role = Role.Admin
+                    });
+                }
+
                 await _ctx.SaveChangesAsync();
                 await _signInManager.SignInAsync(user, true);
                 return RedirectToAction("Index", "Home");
@@ -117,6 +138,35 @@ namespace Attendance.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        [Authorize(Policy = AttendanceConstants.Policies.Admin)]
+        public async Task<IActionResult> ManageUsers()
+        {            
+            List<UserViewModel> userViewModel = new List<UserViewModel>();
+            var users = _userManager.Users.ToList();
+            foreach (var user in users)
+            {
+                var claim = _userManager.GetClaimsAsync(user).GetAwaiter().GetResult().FirstOrDefault();
+                userViewModel.Add(new UserViewModel
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Username = user.UserName,
+                    IsActive = user.LockoutEnabled,
+                    Role = Enum.Parse<Role>(claim.Value)
+                });
+            }
+            return View(userViewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Policy = AttendanceConstants.Policies.Admin)]
+        public async Task<IActionResult> ManageUsers(UserViewModel userViewModel)
+        {
+            //_userManager.
+            return View();
         }
     }
 }

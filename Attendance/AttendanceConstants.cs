@@ -10,8 +10,6 @@ namespace Attendance
     {
         public struct Policies
         {
-            // public const string Anon = nameof(Anon);
-            // public const string User = IdentityServerConstants.LocalApi.PolicyName;
             public const string Teacher = nameof(Teacher);
             public const string Admin = nameof(Admin);
             public const string Student = nameof(Student);

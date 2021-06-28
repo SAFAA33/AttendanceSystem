@@ -10,11 +10,13 @@ namespace Attendance.Controllers
 {
     public class UserController : Controller
     {
+        // Get the current logged in user
         protected string UserId => GetClaim(ClaimTypes.NameIdentifier);
         protected string Username => GetClaim(ClaimTypes.Name);
         protected string Role => GetClaim(AttendanceConstants.Claims.Role);
 
         private string GetClaim(string claimType) => User.Claims
             .FirstOrDefault(x => x.Type.Equals(claimType))?.Value;
+
     }
 }
