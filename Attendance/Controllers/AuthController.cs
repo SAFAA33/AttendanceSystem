@@ -142,7 +142,7 @@ namespace Attendance.Controllers
 
 
         [Authorize(Policy = AttendanceConstants.Policies.Admin)]
-        public async Task<IActionResult> ManageUsers()
+        public IActionResult ManageUsers()
         {            
             List<UserViewModel> userViewModel = new List<UserViewModel>();
             var users = _userManager.Users.ToList();
@@ -159,6 +159,21 @@ namespace Attendance.Controllers
                 });
             }
             return View(userViewModel);
+        }
+
+        public async Task<IActionResult> UserDetails(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            var claim = _userManager.GetClaimsAsync(user).GetAwaiter().GetResult().FirstOrDefault();
+
+            return View(new UserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                IsActive = user.LockoutEnabled,
+                Username = user.UserName,
+                Role = Enum.Parse<Role>(claim.Value)
+            });
         }
 
         [HttpPost]

@@ -1,0 +1,31 @@
+﻿@model UserViewModel
+@*wrap it in a form*@
+
+<h4>User Settings</h4>
+<div class="row">
+    <div class="col">
+        <div>
+            <label>Username</label>
+            <input class="form-control" asp-for="Username" readonly />
+        </div>
+        <div>
+            <label>Email</label>
+            <input class="form-control" asp-for="Email" readonly />
+        </div>
+    </div>
+    <div class="col">
+        <div>
+            <label>Role</label>
+            <select class="form-select" asp-items="Html.GetEnumSelectList<Role>()" asp-for="Role"></select>
+        </div>
+        <div>
+            <label>Active</label>
+            <input class="form-check" asp-for="IsActive" />
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<input class="btn btn-primary" type="submit" value="Save Changes" />
+<input class="btn btn-danger" type="submit" value="Delete User" />

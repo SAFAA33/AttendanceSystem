@@ -8,7 +8,10 @@
 
             <div>
                 <label>Role</label>
-                <select asp-items="Html.GetEnumSelectList<Role>()" asp-for="Role"></select>
+                <select asp-for="Role">
+                    <option value="@Role.Student">Student</option>
+                    <option value="@Role.Teacher">Teacher</option>
+                </select>
             </div>
             <div>
                 <label>Name</label>
