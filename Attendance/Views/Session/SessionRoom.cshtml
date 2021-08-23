@@ -1,4 +1,6 @@
-﻿@model SessionViewModel
+﻿<!-- Session where students can check-in -->
+
+@model SessionViewModel
 
 @{
     Layout = "_Layout";
@@ -6,6 +8,7 @@
 }
 
 
+<!-- Available info to display; Do we need it?? -->
 <div>
 
     <p><strong>Session ID:</strong> @Model.Id</p>
@@ -23,6 +26,8 @@
 
 </div>
 
+<!-- The QR Code -->
+<!-- TODO: I LOOK HORRIBLE, PLEASE STYLE ME -->
 <div class="row">
     <div class="col-9">
         
@@ -34,6 +39,9 @@
 </div>
 
 <a asp-action="CheckIn" asp-route-sessionId="@Model.Id">Check-In</a>
+
+
+<!-- TODO: Move this to seperate js file -->
 
 @section Scripts {
     <script src="~/lib/qr-code/qrcode.js"></script>
