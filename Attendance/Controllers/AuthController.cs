@@ -29,11 +29,11 @@ namespace Attendance.Controllers
             _ctx = ctx;
         }
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View(new RegisterForm());
-        }
+        //[HttpGet]
+        //public IActionResult Register()
+        //{
+        //    return View(new RegisterForm());
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterForm form)
@@ -41,7 +41,7 @@ namespace Attendance.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError(string.Empty, "Something not correct");
-                return View();
+                return View(nameof(Login));
             }
 
             var user = new IdentityUser(form.Username) { Email = form.Email };
@@ -102,7 +102,7 @@ namespace Attendance.Controllers
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
-            return View();
+            return RedirectToAction(nameof(Login));
         }
 
         [HttpGet]

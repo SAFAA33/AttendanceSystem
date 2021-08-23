@@ -1,1 +1,20 @@
-﻿
+﻿Notes:
+
+Please follow these naming conventions:
+
+- partial views: must start with under score:  _ParitalViewName
+
+- Forms Model: must be named by entity name + Form with the capital F: StudentForm
+
+- Entity models: must be directly descriptive and not plural: Student, Course, Session.
+
+- Controllers: must be named entity name + Controller with the capital C: StudentController
+
+- View Models: must be named entity name + ViewModel with the capital V & M: StudentViewModel
+
+- use three slashes /// to write a useful documentation on method level only. 
+
+- use //TODO for early refactoring tasks: //TODO: there is a bug here 
+
+- External Libraries: create folder with the library name under lib directory.
+

@@ -1,0 +1,48 @@
+﻿@model RegisterForm
+
+
+    <!--Student Registration Partial View (it will work as popup modal)-->
+
+    <section class="login-clean">
+        <form class="row g-3 needs-validation" method="post" asp-action="Register" novalidate>
+            <h2 class="visually-hidden">Login Form</h2>
+            <div class="illustration">
+                <img src="~/img/student_icon.png">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" asp-for="Name" placeholder="Name" required>
+                <div class="invalid-feedback">
+                    please type your name
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" asp-for="Username" placeholder="Username" required>
+                <div class="invalid-feedback">
+                    please type your username
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" asp-for="Email" placeholder="Email" required inputmode="email" />
+                <div class="invalid-feedback">
+                    please type a valid email
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="password" asp-for="Password" placeholder="Password" required minlength="8" id="password" />
+                <div class="invalid-feedback">
+                    please type a password with minmum 8 character
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required id="confirm_password" />
+                <div class="invalid-feedback">
+                    password must match
+                </div>
+            </div>
+            <input type="hidden" asp-for="Role" value="@Role.Student" />
+            <div class="mb-3">
+                <button class="btn btn-primary d-block w-100" type="submit" style="color: #00205b;background: #adc7dc;">Sign Up</button>
+            </div>
+            <a class="forgot" href="#" data-bs-dismiss="modal" data-bs-target="#student_modal" data-bs-toggle="modal">Already have an account? Sign In</a>
+        </form>
+    </section>
