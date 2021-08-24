@@ -25,14 +25,21 @@ namespace Attendance
                 var ctx = scope.ServiceProvider.GetRequiredService<DataContext>();
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
+                // User: sara, Password: password, Role: admin
                 var saraUser = new IdentityUser("sara") { Email = "sara@test.com" };
                 userManager.CreateAsync(saraUser, "password").GetAwaiter().GetResult();
                 userManager.AddClaimAsync(saraUser, new Claim(
                     AttendanceConstants.Claims.Role,
-                    AttendanceConstants.Roles.Admin)
-                    )
+                    AttendanceConstants.Roles.Admin))
                     .GetAwaiter().GetResult();
 
+                // User: fatima, Password: password, Role: student
+                var fatimaUser = new IdentityUser("fatima") { Email = "fatima@test.com" };
+                userManager.CreateAsync(fatimaUser, "password").GetAwaiter().GetResult();
+                userManager.AddClaimAsync(fatimaUser, new Claim(
+                    AttendanceConstants.Claims.Role, 
+                    AttendanceConstants.Roles.Student))
+                    .GetAwaiter().GetResult();
 
 
                 ctx.Add(new Course

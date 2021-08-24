@@ -1,0 +1,31 @@
+﻿@model LoginForm
+
+
+<section class="login-clean">
+    <form method="post" asp-action="Login" class="row g-3 needs-validation" novalidate>
+        <h2 class="visually-hidden">Login Form</h2>
+        <div class="illustration">
+            <img src="~/img/student_icon.png">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" asp-for="Username" placeholder="Username" required>
+            <div class="invalid-feedback">
+                please type your username
+            </div>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" asp-for="Password" placeholder="Password" required>
+            <div class="invalid-feedback">
+                please type your password
+            </div>
+            <a class="text-end forgot" href="#" data-bs-toggle="modal" data-bs-target="#forget_pass_modal" data-bs-dismiss="modal"> Forgot password?</a>
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                <input asp-for="RememberMe" type="checkbox" class="form-check-input" id="formCheck-1" /><label class="text-start forgot" for="formCheck-1">Remember me</label>
+            </div>
+            <button class="btn btn-primary d-block w-100" type="submit" style="color: #00205b;background: #adc7dc;">Log In</button>
+        </div>
+        <a class="forgot" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#student_modal-signup">Don't have account? Sign up</a>
+    </form>
+</section>
