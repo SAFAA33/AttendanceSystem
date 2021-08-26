@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Instructor Home Page
+    </title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+
+    
+        
+                <div class="col-9 main-content p-4">                  
+                     
+                      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sessions</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Attendees</button>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="flex-fill flex-col ">
+                                <table class="table table-borderless bg-light mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <h6>View Courses:</h6>
+                    
+                                            </th>
+                                            <th>
+                                                <button type="button" class="btn"><h6>Sessions</h6></button>
+                                            
+                                            </th>
+                                            <th>
+                                             <button type="button" class="btn"><h6>Attendees</h6></button>   
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h6>Session(n) 
+                                                        <button class="btn dropdown-item-text d-inline disabled" type="button"
+                                                id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots-vertical">                                  
+                                                    </i>
+                                                  </button>
+                                                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                                    <li><a class="dropdown-item" href="#deleteSessionModal" role="button" data-bs-toggle="modal">
+                                                        <i class="bi bi-trash m-2"></i>Delete Session</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#editSessionModal" role="button" data-bs-toggle="modal"><i class="bi bi-pencil m-2"></i></i>Rename Session</a></li>
+                                                    </h6>
+                                                </div>
+                                                <div class="col-6">
+                                                    <form class="d-flex">
+                                                        <input class="form-control me-2" type="search">
+                                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                                      </form>
+                                                </div>
+                                            </div>                         
+                                        </tr>
+                                        <tr>                           
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                      <tr>
+                                                          <th><div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                                        </div>                                            
+                                                        </th>
+                                                        <th>#</th>
+                                                        <th >Session</th>
+                                                        <th >Session ID</th>
+                                                        <th >Date & Time</th>
+                                                        <th >Check-ins</th>
+                                                        <th >Attendance Rate</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                1
+                                                            </td>
+                                                            <td>
+                                                              Session 1  
+                                                            </td>
+                                                            <td>
+                                                                20421
+                                                            </td>
+                                                            <td>
+                                                                12/2/2021 16:40
+                                                            </td>
+                                                            <td> 
+                                                                50
+                                                            </td>
+                                                            <td>
+                                                                20%
+                                                            </td>
+                                                        </tr>  
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                2
+                                                            </td>
+                                                            <td>
+                                                              Session 2  
+                                                            </td>
+                                                            <td>
+                                                                19091
+                                                            </td>
+                                                            <td>
+                                                                15/2/2021 16:40
+                                                            </td>
+                                                            <td> 
+                                                                100
+                                                            </td>
+                                                            <td>
+                                                                40%
+                                                            </td>
+                                                        </tr>                                      
+                                                      
+                                                    </tbody>
+                                                  </table>                            
+                                        </tr>                                  
+                                                  </tbody>
+                                                  </table>                            
+                                        </tr>                       
+                                    </tbody>  
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="flex-fill flex-col ">
+                                <table class="table table-borderless bg-light mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <h6>View Courses:</h6>
+                    
+                                            </th>
+                                            <th>
+                                                <button type="button" class="btn"><h6>Sessions</h6></button>
+                                            
+                                            </th>
+                                            <th>
+                                             <button type="button" class="btn"><h6>Attendees</h6></button>   
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h6>Attendees(n) 
+                                                        <button class="btn dropdown-item-text d-inline" type="button"
+                                                id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots-vertical">                                  
+                                                    </i>
+                                                  </button>
+                                                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                                    <li><a class="dropdown-item" href="#addAttendeeModal" role="button" data-bs-toggle="modal">
+                                                        <i class="bi bi-person-plus-fill m-2"></i>Add Attendee</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#deleteAttendeeModal" role="button" data-bs-toggle="modal">
+                                                        <i class="bi bi-trash-fill m-2"></i></i>Deletd selected</a></li>
+                                                    </h6>
+                                                </div>
+                                                <div class="col-6">
+                                                    <form class="d-flex">
+                                                        <input class="form-control me-2" type="search">
+                                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                                      </form>
+                                                </div>
+                                            </div>                         
+                                        </tr>
+                                        <tr>                           
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                      <tr>
+                                                          <th><div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                                        </div>                                            
+                                                        </th>
+                                                        <th colspan="3">Attendee</th>                                                        
+                                                        <th >Attendance Rate</th>
+                                                        <th >1</th>
+                                                        <th >2</th>
+                                                        <th >3</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                                </div>
+                                                               
+                                                            </td>
+                                                            
+                                                            <td>
+                                                              Student 1  
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            <td>
+
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                50% 
+                                                            </td>
+                                                            <td> 
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                
+                                                            </td>
+                                                        </tr>  
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                Student 2
+                                                            </td>
+                                                            <td>
+                                                               
+                                                            </td>
+                                                            <td>
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                20%
+                                                            </td>
+                                                            <td> 
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                
+                                                            </td>
+                                                        </tr>                                      
+                                                      
+                                                    </tbody>
+                                                  </table>                            
+                                        </tr>                                  
+                                                  </tbody>
+                                                  </table>                            
+                                        </tr>                       
+                                    </tbody>  
+                                </table>
+                            </div>
+                        </div>
+                      </div>   
+                      
+                      <!--Add Attendee Modal-->
+                      
+  <div class="modal fade" id="addAttendeeModal" tabindex="-1" aria-labelledby="addAttendeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAttendeeModalLabel">Add Attendee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="attendeeEmail" class="form-label">
+                        Please enter the attendee's email: </label>
+                    <input class="form-control" type="email" name="attendeeEmail" placeholder="">
+                </div>
+                </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success disabled">Add</button>
+        </div>
+      </div>
+    </div>
+  </div><!--End -->
+
+  <!--Delete Attendee Modal-->
+  <div class="modal fade" id="deleteAttendeeModal" tabindex="-1" aria-labelledby="deleteAttendeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteAttendeeModalLabel">Delete Attendee/s
+        </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            You are about to delete 1 attendee/s.
+
+            Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div> <!--END-->
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+</body>
+</html>
