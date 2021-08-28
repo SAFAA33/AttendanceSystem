@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>Instructor Home Page</title>
+  </head>
+  <body>
+
+            <!--Navbar-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-light bg-light" >
+            <a href="#"
+             class="navbar-brand mb-0">
+             <img
+              class="d-inline align-bottom"
+             src="./image/logo.png" 
+             width="128px" /> 
+             <p style="font-family: 'Akaya Kanadaka', serif;
+             color: #adc7dc;border-color: var(--bs-primary);">Fast Attendance System</p>
+             </a>
+
+             <div class="d-flex">
+                 <ul>
+                     <a class="btn" data-bs-toggle="modal" href="#messageModalToggle" role="button">
+                         <i class=" bi bi-envelope position-relative"
+                        style="font-size: 2rem; color: cornflowerblue; align-items: start;"></i>
+                    </a>
+                    <span class="position-absolute translate-middle rounded-pill bg-danger" style="font-size: large">
+                                14
+                                <span class="visually-hidden">read messages</span>
+                              </span>
+                            
+                     
+
+                 </ul>
+                 <div class="dropdown">
+                    <button class="btn dropdown-item-text" type="button" 
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img
+                    class="d-inline align-items-start rounded-circle"
+                    src="./image/download.png"
+                    height="55px"                    
+                    loading="lazy"
+                  />User Name
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" data-bs-toggle="modal" href="#editProfileModalToggle" role="button">
+                        <i class="bi bi-person m-2"></i>Profile</a></li>
+                      <li><a class="dropdown-item" data-bs-toggle="modal" href="#logOutModal" role="button">
+                        <i class="bi bi-box-arrow-right m-2"></i>Logout</a></li>
+                     
+                    </ul>
+                  </div>
+                
+
+
+            
+
+             </div>
+     
+         </nav><!--Navbar End-->
+
+    </div>
+               <!--SideBar-->
+   <div class="continer">
+    <div class="row">
+        <div class="col-3 sidebar p-4" style="max-height: 600px; overflow-y: scroll; background-color: #adc7dc;">
+            <h5 style="color: rgb(19, 19, 70); text-align: center;"> My Courses 
+                <button class="btn ms-5">
+                    <i class="bi bi-plus-circle" style="font-size: 2rem" title="Add New Course" 
+                    data-bs-toggle="modal" data-bs-target="#addNewCourseModal">                        
+                    </i>
+                </button>
+                </h5>
+                <table class="table table-bordered table-active mt-4" style="background-color: white;">
+                    <tbody>
+                        <thead>
+                            <tr>
+                              <th scope="col" style="text-align:center;">Untitled course 
+                                <button class="btn dropdown-item-text d-inline me-1" type="button"
+                                id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical text-end">                                  
+                                    </i>
+                                  </button>
+                                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                    <li><a class="dropdown-item" href="#editCourseModal" role="button" data-bs-toggle="modal">
+                                      <i class="bi bi-pencil m-2"></i>Edit Course</a></li>
+                                    <li><a class="dropdown-item" href="#deleteCourseModal" role="button" data-bs-toggle="modal">
+                                      <i class="bi bi-trash-fill m-2"></i></i>Delete Course</a></li>
+                                   
+                                  </ul>                         
+                              </th>                     
+                              
+                            </tr>
+                            <tr>
+                                <th scope="col" style="text-align:center;">English 
+                                  <button class="btn dropdown-item-text d-inline me-1" type="button"
+                                  id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <i class="bi bi-three-dots-vertical text-end">                                  
+                                      </i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                      <li><a class="dropdown-item" href="#editCourseModal" role="button" data-bs-toggle="modal">
+                                        <i class="bi bi-pencil m-2"></i>Edit Course</a></li>
+                                      <li><a class="dropdown-item" href="#deleteCourseModal" role="button" data-bs-toggle="modal">
+                                        <i class="bi bi-trash-fill m-2"></i></i>Delete Course</a></li>
+                                     
+                                    </ul>                         
+                                </th>               
+                              </tr>
+                              <tr>
+                                <th scope="col" style="text-align:center;">Language 
+                                  <button class="btn dropdown-item-text d-inline me-1" type="button"
+                                  id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <i class="bi bi-three-dots-vertical">                                  
+                                      </i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                      <li><a class="dropdown-item" href="#editCourseModal" role="button" data-bs-toggle="modal">
+                                        <i class="bi bi-pencil m-2"></i>Edit Course</a></li>
+                                      <li><a class="dropdown-item" href="#deleteCourseModal" role="button" data-bs-toggle="modal">
+                                        <i class="bi bi-trash-fill m-2"></i></i>Delete Course</a></li>
+                                     
+                                    </ul>                         
+                                </th>                      
+                              </tr>
+                              <tr>
+                                <th scope="col" style="text-align:center;">IT 
+                                  <button class="btn dropdown-item-text d-inline me-1" type="button"
+                                  id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <i class="bi bi-three-dots-vertical">                                  
+                                      </i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                      <li><a class="dropdown-item" href="#editCourseModal" role="button" data-bs-toggle="modal">
+                                        <i class="bi bi-pencil m-2"></i>Edit Course</a></li>
+                                      <li><a class="dropdown-item" href="#deleteCourseModal" role="button" data-bs-toggle="modal">
+                                        <i class="bi bi-trash-fill m-2"></i></i>Delete Course</a></li>
+                                     
+                                    </ul>                         
+                                </th>                      
+                              </tr>
+                          </thead>
+                    </tbody>
+                </table> 
+        </div>
+        <!--MainBar-->
+        <div class="col-9 main-content p-4">
+            <div class="row">
+                <a class="col-4 btn btn-outline-danger mb-3" data-bs-toggle="modal" 
+            href="#newSessionModalToggle" role="button">Run New Chick-In Session </a>
+            <div class="col-8 text-end">
+                <button class="btn btn-outline-success">Download Report</button>
+            </div>           
+            </div>
+            
+            <h5 class="mb-3">Untitled course</h5>                                 
+                
+            <div class="flex-fill flex-col ">
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="flex-fill flex-col ">
+                        <table class="table table-borderless bg-light mt-3">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h6 >View Courses:</h6>
+            
+                                    </th>
+                                    <th>
+                                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" 
+                                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" 
+                                            aria-selected="true">Sessions</button>
+                                          </li>
+                                        </ul>                                            
+                                    </th>
+                                    <th>
+                                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" 
+                                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" 
+                                            aria-selected="false">Attendees</button>
+                                          </li> 
+                                        </ul> 
+                                    </th>
+                                </ul>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h6>Session(n) 
+                                                <button class="btn dropdown-item-text d-inline disabled" type="button"
+                                        id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical">                                  
+                                            </i>
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                            <li><a class="dropdown-item" href="#deleteSessionModal" role="button" data-bs-toggle="modal">
+                                                <i class="bi bi-trash m-2"></i>Delete Session</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#editSessionModal" role="button" data-bs-toggle="modal"><i class="bi bi-pencil m-2"></i></i>Rename Session</a></li>
+                                            </h6>
+                                        </div>
+                                        <div class="col-6">
+                                            <form class="d-flex">
+                                                <input class="form-control me-2" type="search">
+                                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                              </form>
+                                        </div>
+                                    </div>                         
+                                </tr>
+                                <tr>                           
+                                        <table class="table table-hover">
+                                            <thead>
+                                              <tr>
+                                                  <th><div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                                </div>                                            
+                                                </th>
+                                                <th>#</th>
+                                                <th >Session</th>
+                                                <th >Session ID</th>
+                                                <th >Date & Time</th>
+                                                <th >Check-ins</th>
+                                                <th >Attendance Rate</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                      Session 1  
+                                                    </td>
+                                                    <td>
+                                                        20421
+                                                    </td>
+                                                    <td>
+                                                        12/2/2021 16:40
+                                                    </td>
+                                                    <td> 
+                                                        50
+                                                    </td>
+                                                    <td>
+                                                        20%
+                                                    </td>
+                                                </tr>  
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                      Session 2  
+                                                    </td>
+                                                    <td>
+                                                        19091
+                                                    </td>
+                                                    <td>
+                                                        15/2/2021 16:40
+                                                    </td>
+                                                    <td> 
+                                                        100
+                                                    </td>
+                                                    <td>
+                                                        40%
+                                                    </td>
+                                                </tr>                                      
+                                              
+                                            </tbody>
+                                          </table>                            
+                                </tr>                                  
+                                          </tbody>
+                                          </table>                            
+                                </tr>                       
+                            </tbody>  
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="flex-fill flex-col ">
+                        <table class="table table-borderless bg-light mt-3">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h6>View Courses:</h6>
+            
+                                    </th>
+                                    <th>
+                                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" 
+                                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" 
+                                                aria-selected="true">Sessions</button>
+                                              </li>
+                                            </ul>                                            
+                                    </th>
+                                    <th>
+                                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" 
+                                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" 
+                                                aria-selected="false">Attendees</button>
+                                              </li> 
+                                            </ul>    
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h6>Attendees(n) 
+                                                <button class="btn dropdown-item-text d-inline" type="button"
+                                        id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical">                                  
+                                            </i>
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                            <li><a class="dropdown-item" href="#addAttendeeModal" role="button" data-bs-toggle="modal">
+                                                <i class="bi bi-person-plus-fill m-2"></i>Add Attendee</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#deleteAttendeeModal" role="button" data-bs-toggle="modal">
+                                                <i class="bi bi-trash-fill m-2"></i></i>Deletd selected</a></li>
+                                            </h6>
+                                        </div>
+                                        <div class="col-6">
+                                            <form class="d-flex">
+                                                <input class="form-control me-2" type="search">
+                                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                              </form>
+                                        </div>
+                                    </div>                         
+                                </tr>
+                                <tr>                           
+                                        <table class="table table-hover">
+                                            <thead>
+                                              <tr>
+                                                  <th><div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                                </div>                                            
+                                                </th>
+                                                <th colspan="3">Attendee</th>                                                        
+                                                <th >Attendance Rate</th>
+                                                <th >1</th>
+                                                <th >2</th>
+                                                <th >3</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        </div>
+                                                       
+                                                    </td>
+                                                    
+                                                    <td>
+                                                      Student 1  
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        20% 
+                                                    </td>
+                                                    <td> 
+                                                        <i class="bi bi-x-circle-fill" style="color: red;"></i>                                                                
+                                                    </td>
+                                                    <td>
+                                                        <i class="bi bi-x-circle-fill" style="color: red;"></i>                                                                
+                                                    </td>
+                                                    <td><i class="bi bi-check-circle-fill" style="color: green;"></i>
+                                                    </td>
+                                                </tr>  
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        </div>
+                                                       
+                                                    </td>
+                                                    
+                                                    <td>
+                                                      Student 2  
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        75% 
+                                                    </td>
+                                                    <td> 
+                                                     <i class="bi bi-check-circle-fill" style="color: green;"></i>                                                                
+                                                    </td>
+                                                    <td>
+                                                        <i class="bi bi-x-circle-fill" style="color: red;"></i>                                                                
+                                                    </td>
+                                                    <td><i class="bi bi-check-circle-fill" style="color: green;"></i>
+                                                    </td>
+                                                </tr>                                      
+                                              
+                                            </tbody>
+                                          </table>                            
+                                </tr>                                  
+                                          </tbody>
+                                          </table>                            
+                                </tr>                       
+                            </tbody>  
+                        </table>
+                    </div>
+                </div>
+              </div> 
+            </div>  
+            <div class="pb-4 rounded">
+                <div class="row">
+                    <div class="col-4">
+                        Showing 10 out of 100
+                    </div>
+                    <div class="col-8 text-end">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary">1</button>
+                            <button type="button" class="btn btn-outline-primary">2</button>
+                            <button type="button" class="btn btn-outline-primary">3</button>
+                          </div>
+                    </div>
+                </div>
+            </div>         
+        </div>
+    </div>
+   </div> <!--End mainBar-->
+
+   <!-- Model (windows)-->
+
+   <!-- first, Message Modal-->
+   <div class="modal fade" id="messageModalToggle" aria-hidden="true" aria-labelledby="messageModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="messageModalToggleLabel">Messages </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h5 type="button" style="color:tomato" data-bs-toggle="modal" data-bs-target="#newMessageModalToggle3" data-bs-dismiss="modal"> 
+                <i class="bi bi-plus-circle-fill">
+                </i> New Message</h5>
+              <hr>
+              <button class="btn" data-bs-target="#readMessageModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"
+              style="border-bottom: slategray;">
+                <div class="row">
+                    <div class="col-6">
+                      <i class="bi bi-chat-left-text d-inline-block"></i><p>sorry.. no class today.</p>
+                    </div>
+                    <div class="col-3">
+                        <p>14/7/2021,</p> <p>12:00 am</p>
+                    </div>
+                    <div class="col-3">
+                        <p>(0/100)Attendees</p>
+                    </div>
+                </div>
+              </button> 
+              <hr>
+              <button class="btn" data-bs-target="#readMessageModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"
+              style="border-bottom: slategray;">
+                <div class="row">
+                    <div class="col-6">
+                      <i class="bi bi-chat-left-text d-inline-block"></i><p>sorry.. no class today.</p>
+                    </div>
+                    <div class="col-3">
+                        <p>14/7/2021,</p> <p>12:00 am</p>
+                    </div>
+                    <div class="col-3">
+                        <p>(0/100)Attendees</p>
+                    </div>
+                </div>
+              </button> 
+              <hr>
+              <button class="btn" data-bs-target="#readMessageModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"
+              style="border-bottom: slategray;">
+                <div class="row">
+                    <div class="col-6">
+                      <i class="bi bi-chat-left-text d-inline-block"></i><p>sorry.. no class today.</p>
+                    </div>
+                    <div class="col-3">
+                        <p>14/7/2021,</p> <p>12:00 am</p>
+                    </div>
+                    <div class="col-3">
+                        <p>(0/100)Attendees</p>
+                    </div>
+                </div>
+              </button>                        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="readMessageModalToggle2" aria-hidden="true" aria-labelledby="readMessageModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="readMessageModalToggleLabel2">Who Read The Message?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-lg-center"><h5 style="color: success;"> Viewed (n)</h5></div>
+                        <div class="card-body text-success">
+                          <div class="list-group">                          
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Anhar</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Majeda</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Sondus</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Aryam</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Maryam</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Anfal</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Afnan</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-success">Sara</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card border-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-lg-center"><h5 style="color: success;"> Haven't Viewed (n)</h5>
+                        </div>
+                        <div class="card-body text-danger">                          
+                          <div class="list-group">                           
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Safaa</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Amal</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Sara</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Fatima</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Nesreen</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Bshayer</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Salma</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Noor</a>
+                          </div>
+                        </div>
+                      </div>                      
+                    </div>
+                  </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn text-danger link text-start"><i class="bi bi-trash-fill m-2"></i> DELETE MESSAGE</button>
+          <button class="btn btn-primary" data-bs-target="#messageModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="newMessageModalToggle3" aria-hidden="true" aria-labelledby="newMessageModalToggleLabel3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newMessageModalToggleLabel3">Send a messaga</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select course</option>
+                    <option value="1">Untitled Course</option>
+                    <option value="2">English</option>
+                    <option value="3">Language</option>
+                    <option value="4">IT</option>
+                  </select>
+                <form class="was-validated">
+                    <div class="mb-3">
+                      <label for="validationTextarea message-text" class="col-form-label"></label>
+                      <textarea class="form-control is-invalid" id="validationTextarea" 
+                      placeholder="Type in your message" required></textarea>
+                      <div class="invalid-feedback text-end">
+                        200 charaters left.
+                      </div>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-target="#messageModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="submit">Send</button>  
+            </div>
+        </div>
+    </div>
+  </div> <!--End Meassage Modal-->
+
+      <!--Edit profile Modale-->
+
+      <div class="modal fade" id="editProfileModalToggle" aria-hidden="true" aria-labelledby="editProfileModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editProfileModalToggleLabel">Edit Profile</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <button class="btn" data-bs-target="#editPhotoModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
+                    <img class="d-inline align-items-start rounded-circle"
+                       src="./image/download.png"
+                       height="55px"                    
+                       loading="lazy"/>
+                       <strong>  User Name</strong> 
+                </button>
+                <hr>
+                <section >
+                    <form method="post">
+                        <h2 class="visually-hidden">Edit Profile</h2>
+                        <div class="mb-3">
+                            <label for="editUserName" class="form-label">User Name: </label>
+                            <input class="form-control" type="name" name="newUserName" placeholder="Safaa">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email:</label>
+                            <input class="form-control" type="email" name="newEmail" placeholder="Email@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPassword" class="form-label">Change Password:</label>
+                            <input class="form-control" type="password" name="newPassword" placeholder="Password">
+                        </div>     
+                    </form>
+                </section>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mb-3" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger mb-3">Update</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="editPhotoModalToggle2" aria-hidden="true" aria-labelledby="editPhotoModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editPhotoModalToggleLabel2"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label for="formFileLg" class="form-label">Choose a profile Photo</label>
+                    <input class="form-control form-control-lg" id="formFileLg" type="file">
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mb-3" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger mb-3">Update</button>
+            </div>
+          </div>
+        </div>
+      </div><!--End Edit profile Modale-->
+
+       <!-- Logout Modal-->
+       <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
+       aria-hidden="true">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="logOutModalLabel">Ready to Leave?</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                   </button>
+               </div>
+               <div class="modal-body" style="color: maroon;">Select "Logout" below if you are ready to end your current session.</div>
+               <div class="modal-footer">
+                <button type="button" class="btn btn-secondary mb-3" data-bs-dismiss="modal">Close</button>
+                   <a class="btn btn-danger mb-3" href="login.html">Logout</a>
+               </div>
+           </div>
+       </div>
+   </div><!--End Logout modal-->
+
+
+      <!--Add New course modal-->
+
+      <div class="modal fade" id="addNewCourseModal" tabindex="-1" aria-labelledby="addNewCourseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addNewCourseModalLabel">New Course</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="courseName" class="form-label">Course Name: </label>
+                        <input class="form-control" type="name" name="name" placeholder="">
+                    </div>
+                <div class="mb-3">
+                    <label for="courseDescription" class="form-label">Course Description: </label>
+                    <input class="form-control" type="text" name="description" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="courseID" class="form-label">Course ID: </label>
+                    <input class="form-control" type="number" name="id" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="Year" class="form-label">Year: </label>
+                    <select class="form-select" type="range" min="2019" max="2021" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="1">2019</option>
+                        <option value="2">2020</option>
+                        <option value="3">2021</option>
+                      </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary disabled">Save Course</button>
+            </div>
+          </div>
+        </div>
+      </div> <!--End Add New course modal-->
+
+      <!--Edit course Modal-->
+      <div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="editCourseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editCourseModalLabel">Edit Course</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="editCourseName" class="form-label">New Course Name: </label>
+                        <input class="form-control" type="name" name="editCourseName" placeholder="">
+                    </div>
+                <div class="mb-3">
+                    <label for="editCourseDescription" class="form-label">New Course Description: </label>
+                    <input class="form-control" type="text" name="editDescription" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="editCourseID" class="form-label">New Course ID: </label>
+                    <input class="form-control" type="number" name="editCourseID" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="Year" class="form-label">Year: </label>
+                    <select class="form-select" type="range" min="2019" max="2021" id="inputGroupSelect02">
+                        <option selected>Choose...</option>
+                        <option value="1">2019</option>
+                        <option value="2">2020</option>
+                        <option value="3">2021</option>
+                      </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary disabled">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div><!--END Edit course Modal-->
+
+      <!--Delete Course Modal-->
+      <div class="modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="deleteCourseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteCourseModalLabel">Delete Cours?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 style="color: maroon;">Note: This action cannot be undone</h4>
+                <h6>Are you sure you want to delete this course?</h6>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>  <!--End Delete Course Modal-->
+
+      <!--Chick in modal-->
+      <div class="modal fade" id="newSessionModalToggle" aria-hidden="true" aria-labelledby="newSessionModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newSessionModalToggleLabel">Run a new check-in Session</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Select course</option>
+                    <option value="1">Untitled Course</option>
+                    <option value="2">English</option>
+                    <option value="3">Language</option>
+                    <option value="4">IT</option>
+                  </select>
+                  <form class="was-validated">
+                    <div class="mb-3">
+                        <input class="form-control" type="name" name="sessionName" placeholder="Session Name">
+                    </div>
+                  </form>
+                  <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Select Session duration</option>
+                    <option value="1">1 minute</option>
+                    <option value="2">5 minutes</option>
+                    <option value="3">10 minutes</option>
+                    <option value="4">Unlimited</option>
+                  </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-danger" data-bs-target="#runSessionModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Run</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="runSessionModalToggle2" aria-hidden="true" aria-labelledby="runSessionModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered  modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="runSessionModalToggleLabel2"> </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card mb-3" style="max-width: 800px; max-height: 800px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="..." class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Course Name</h5>
+                          <h6>Session Name</h6>
+                          <div class="card-text bg-info">
+                              <h6 style="text-align: center;">Session ID</h6>
+                              <h5 style="text-align: center;">20987</h5>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button class="btn link-danger"  data-bs-dismiss="modal">End Session</button>
+            </div>
+          </div>
+        </div>
+      </div> <!--End Run Session-->
+
+      <!--Delete Session Modal-->
+      <div class="modal fade" id="deleteSessionModal" tabindex="-1" aria-labelledby="deleteSessionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteSessionModalLabel">Delete Session?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <h6>Are you sure you want to delete this Session?</h6>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>  <!--End Delete Session Modal-->
+
+      <!--Edit Session-->
+      <div class="modal fade" id="editSessionModal" tabindex="-1" aria-labelledby="editSessionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editSessionModalLabel">Edit Course</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="mb-3"><input class="form-control" type="name" name="name" placeholder="Session Name"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary disabled">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div><!--END Edit course Modal-->
+
+       <!--Add Attendee Modal-->
+                      
+  <div class="modal fade" id="addAttendeeModal" tabindex="-1" aria-labelledby="addAttendeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAttendeeModalLabel">Add Attendee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="attendeeEmail" class="form-label">
+                        Please enter the attendee's email: </label>
+                    <input class="form-control" type="email" name="attendeeEmail" placeholder="">
+                </div>
+                </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success disabled">Add</button>
+        </div>
+      </div>
+    </div>
+  </div><!--End -->
+
+  <!--Delete Attendee Modal-->
+  <div class="modal fade" id="deleteAttendeeModal" tabindex="-1" aria-labelledby="deleteAttendeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteAttendeeModalLabel">Delete Attendee/s
+        </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            You are about to delete 1 attendee/s.
+
+            Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div> <!--END-->
+
+
+
+
+    
+  
+
+
+
+    
+
+
+
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
